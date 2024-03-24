@@ -133,7 +133,7 @@ function getCountDaysOnPeriod(dateStart, dateEnd) {
   const oneDay = 24 * 60 * 60 * 1000;
 
   return Math.floor(
-    (new Date(dateEnd) - new Date(dateStart) + oneDay) / oneDay
+    (new Date(dateEnd) - new Date(dateStart)) / oneDay + oneDay
   );
 }
 
