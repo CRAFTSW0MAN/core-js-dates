@@ -31,8 +31,9 @@ function dateToTimestamp(date) {
  * Date(2023, 5, 1, 8, 20, 55) => '08:20:55'
  * Date(2015, 10, 20, 23, 15, 1) => '23:15:01'
  */
-function getTime(date) {
-  return date.toLocaleTimeString();
+function getTime(/* date */) {
+  throw new Error('Not implemented');
+  // return date.toLocaleTimeString();
 }
 
 /**
@@ -80,28 +81,27 @@ function getDayName(date) {
  * Date('2024-02-13T00:00:00Z') => Date('2024-02-16T00:00:00Z')
  * Date('2024-02-16T00:00:00Z') => Date('2024-02-23T00:00:00Z')
  */
-function getNextFriday(/* date */) {
-  throw new Error('Not implemented');
-  // const dayOfTheWeek = date.getDay();
-  // const dayNumber = date.getDate();
-  // switch (dayOfTheWeek) {
-  //   case 0:
-  //     return new Date(date.setDate(dayNumber + 5));
-  //   case 1:
-  //     return new Date(date.setDate(dayNumber + 4));
-  //   case 2:
-  //     return new Date(date.setDate(dayNumber + 3));
-  //   case 3:
-  //     return new Date(date.setDate(dayNumber + 2));
-  //   case 4:
-  //     return new Date(date.setDate(dayNumber + 1));
-  //   case 5:
-  //     return new Date(date.setDate(dayNumber + 7));
-  //   case 6:
-  //     return new Date(date.setDate(dayNumber + 6));
-  //   default:
-  //     return new Date(date.setDate(dayNumber + 5));
-  // }
+function getNextFriday(date) {
+  const dayOfTheWeek = date.getDay();
+  const dayNumber = date.getDate();
+  switch (dayOfTheWeek) {
+    case 0:
+      return new Date(date.setDate(dayNumber + 5));
+    case 1:
+      return new Date(date.setDate(dayNumber + 4));
+    case 2:
+      return new Date(date.setDate(dayNumber + 3));
+    case 3:
+      return new Date(date.setDate(dayNumber + 2));
+    case 4:
+      return new Date(date.setDate(dayNumber + 1));
+    case 5:
+      return new Date(date.setDate(dayNumber + 7));
+    case 6:
+      return new Date(date.setDate(dayNumber + 6));
+    default:
+      return new Date(date.setDate(dayNumber + 5));
+  }
 }
 
 /**
