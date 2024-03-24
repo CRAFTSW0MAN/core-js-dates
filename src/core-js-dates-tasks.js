@@ -80,27 +80,28 @@ function getDayName(date) {
  * Date('2024-02-13T00:00:00Z') => Date('2024-02-16T00:00:00Z')
  * Date('2024-02-16T00:00:00Z') => Date('2024-02-23T00:00:00Z')
  */
-function getNextFriday(date) {
-  const dayOfTheWeek = date.getDay();
-  const dayNumber = date.getDate();
-  switch (dayOfTheWeek) {
-    case 0:
-      return new Date(date.setDate(dayNumber + 5));
-    case 1:
-      return new Date(date.setDate(dayNumber + 4));
-    case 2:
-      return new Date(date.setDate(dayNumber + 3));
-    case 3:
-      return new Date(date.setDate(dayNumber + 2));
-    case 4:
-      return new Date(date.setDate(dayNumber + 1));
-    case 5:
-      return new Date(date.setDate(dayNumber + 7));
-    case 6:
-      return new Date(date.setDate(dayNumber + 6));
-    default:
-      return new Date(date.setDate(dayNumber + 5));
-  }
+function getNextFriday(/* date */) {
+  throw new Error('Not implemented');
+  // const dayOfTheWeek = date.getDay();
+  // const dayNumber = date.getDate();
+  // switch (dayOfTheWeek) {
+  //   case 0:
+  //     return new Date(date.setDate(dayNumber + 5));
+  //   case 1:
+  //     return new Date(date.setDate(dayNumber + 4));
+  //   case 2:
+  //     return new Date(date.setDate(dayNumber + 3));
+  //   case 3:
+  //     return new Date(date.setDate(dayNumber + 2));
+  //   case 4:
+  //     return new Date(date.setDate(dayNumber + 1));
+  //   case 5:
+  //     return new Date(date.setDate(dayNumber + 7));
+  //   case 6:
+  //     return new Date(date.setDate(dayNumber + 6));
+  //   default:
+  //     return new Date(date.setDate(dayNumber + 5));
+  // }
 }
 
 /**
@@ -133,7 +134,7 @@ function getCountDaysOnPeriod(dateStart, dateEnd) {
   const oneDay = 24 * 60 * 60 * 1000;
 
   return Math.floor(
-    (new Date(dateEnd) - new Date(dateStart)) / oneDay + oneDay
+    (new Date(dateEnd) - new Date(dateStart) + oneDay) / oneDay
   );
 }
 
