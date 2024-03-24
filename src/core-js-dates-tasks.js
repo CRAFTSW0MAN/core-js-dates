@@ -31,9 +31,8 @@ function dateToTimestamp(date) {
  * Date(2023, 5, 1, 8, 20, 55) => '08:20:55'
  * Date(2015, 10, 20, 23, 15, 1) => '23:15:01'
  */
-function getTime(/* date */) {
-  throw new Error('Not implemented');
-  // return date.toLocaleTimeString();
+function getTime(date) {
+  return date.toTimeString().slice(0, 8);
 }
 
 /**
@@ -155,8 +154,12 @@ function getCountDaysOnPeriod(dateStart, dateEnd) {
  * '2024-02-02', { start: '2024-02-02', end: '2024-03-02' } => true
  * '2024-02-10', { start: '2024-02-02', end: '2024-03-02' } => true
  */
-function isDateInPeriod(/* date, period */) {
-  throw new Error('Not implemented');
+function isDateInPeriod(date, period) {
+  const day = new Date(date);
+  const dateStart = new Date(period.start);
+  const dateEnd = new Date(period.end);
+
+  return day >= dateStart && day <= dateEnd;
 }
 
 /**
@@ -170,10 +173,26 @@ function isDateInPeriod(/* date, period */) {
  * '1999-01-05T02:20:00.000Z' => '1/5/1999, 2:20:00 AM'
  * '2010-12-15T22:59:00.000Z' => '12/15/2010, 10:59:00 PM'
  */
-function formatDate(/* date */) {
-  throw new Error('Not implemented');
-}
+function formatDate(date) {
+  const options = {
+    month: 'numeric',
+    day: 'numeric',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: true,
+    timeZone: 'UTC',
+    timeZoneName: 'short',
+  };
 
+  const resultDate = new Intl.DateTimeFormat('en-US', options).format(
+    new Date(date)
+  );
+  const arrResult = resultDate.split(' ');
+  arrResult.pop();
+  return arrResult.join(' ');
+}
 /**
  * Returns the total number of weekend days (Saturdays and Sundays) in a specified month and year.
  *
